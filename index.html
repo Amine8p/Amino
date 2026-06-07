@@ -3,246 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لعبة حظ أساطير كأس العالم 🥥</title>
+    <title>صفحة طلب منتج</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            color: #333;
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background-color: #f4f7f6; 
+            text-align: center; 
         }
-
-        .game-container {
-            text-align: center;
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            max-width: 500px;
-            width: 90%;
+        .form-container { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            display: inline-block; 
+            max-width: 400px; 
+            width: 100%; 
+            box-sizing: border-box; 
         }
-
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 24px;
+        h2 { color: #333; margin-bottom: 20px; }
+        label { display: block; text-align: right; margin-bottom: 5px; font-weight: bold; color: #555; }
+        input, select, textarea { 
+            display: block; 
+            width: 100%; 
+            margin-bottom: 15px; 
+            padding: 12px; 
+            border-radius: 5px; 
+            border: 1px solid #ccc; 
+            box-sizing: border-box; 
+            font-size: 16px; 
         }
-
-        p.description {
-            color: #7f8c8d;
-            margin-bottom: 30px;
+        button { 
+            background-color: #ff5722; 
+            color: white; 
+            cursor: pointer; 
+            border: none; 
+            font-weight: bold; 
+            width: 100%; 
+            padding: 12px; 
+            font-size: 18px; 
+            border-radius: 5px; 
+            transition: 0.3s; 
         }
-
-        .coconuts-stage {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 40px;
-            min-height: 150px;
-            align-items: flex-end;
-        }
-
-        .coconut-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            position: relative;
-            width: 100px;
-        }
-
-        .coconut {
-            font-size: 60px;
-            transition: transform 0.5s ease;
-            user-select: none;
-        }
-
-        /* تأثير الاهتزاز عند الخلط */
-        .shaking .coconut {
-            animation: shake 0.5s infinite;
-        }
-
-        /* تأثير الارتفاع عند الكشف عن الجائزة */
-        .revealed .coconut {
-            transform: translateY(-50px) scale(1.1);
-        }
-
-        .player-card {
-            font-size: 14px;
-            font-weight: bold;
-            background: #f1f2f6;
-            padding: 5px 10px;
-            border-radius: 10px;
-            position: absolute;
-            bottom: -30px;
-            opacity: 0;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            transform: translateY(10px);
-            white-space: nowrap;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .revealed .player-card {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .btn-shuffle {
-            background-color: #27ae60;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
-        }
-
-        .btn-shuffle:hover {
-            background-color: #219653;
-        }
-
-        .btn-shuffle:active {
-            transform: scale(0.98);
-        }
-
-        .btn-shuffle:disabled {
-            background-color: #bdc3c7;
-            cursor: not-allowed;
-            box-shadow: none;
-        }
-
-        #result-message {
-            margin-top: 30px;
-            font-size: 20px;
-            font-weight: bold;
-            min-height: 30px;
-            color: #2980b9;
-        }
-
-        /* أنيميشن الاهتزاز */
-        @keyframes shake {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            20% { transform: translate(-5px, 0) rotate(-5deg); }
-            40% { transform: translate(5px, 0) rotate(5deg); }
-            60% { transform: translate(-5px, 0) rotate(-3deg); }
-            80% { transform: translate(5px, 0) rotate(3deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
-        }
+        button:hover { background-color: #e64a19; }
     </style>
 </head>
 <body>
 
-    <div class="game-container">
-        <h1>🥥 تحدي أساطير كأس العالم ⚽</h1>
-        <p class="description">اضغط على زر الخلط، ثم اختر جوزة هند واحدة لترى أي أسطورة نادرة ستجلب لك الحظ!</p>
+    <div class="form-container">
+        <h2>استمارة طلب جديدة 🛒</h2>
+        
+        <!-- تم ربط النموذج ببريدك الإلكتروني مباشرة بالأسفل -->
+        <form action="https://formsubmit.co/mohj7405@gmail.com" method="POST">
+            
+            <!-- 1. نوعية الطلبية -->
+            <label for="order_type">نوعية الطلبية (المنتج):</label>
+            <input type="text" id="order_type" name="نوعية_الطلبية" placeholder="مثال: حذاء رياضي، قميص..." required>
+            
+            <!-- 2. الكمية -->
+            <label for="quantity">الكمية المطلوبة:</label>
+            <input type="number" id="quantity" name="الكمية" min="1" value="1" required>
+            
+            <!-- 3. رقم الهاتف -->
+            <label for="phone">رقم الهاتف لتأكيد الطلب:</label>
+            <input type="tel" id="phone" name="رقم_الهاتف" placeholder="مثال: 06XXXXXXXX" required>
+            
+            <!-- 4. مكان التوصيل -->
+            <label for="address">مكان التوصيل (العنوان والولاية):</label>
+            <textarea id="address" name="مكان_التوصيل" rows="3" placeholder="اكتب عنوانك بالتفصيل هنا..." required></textarea>
+            
+            <!-- إلغاء كابتشا التفعيل المزعجة للزبائن بعد أول تفعيل -->
+            <input type="hidden" name="_captcha" value="false">
 
-        <div class="coconuts-stage" id="stage">
-            <!-- جوزة الهند الأولى -->
-            <div class="coconut-box" onclick="revealCoconut(0)">
-                <div class="coconut">🥥</div>
-                <div class="player-card" id="card-0">؟؟؟</div>
-            </div>
-            <!-- جوزة الهند الثانية -->
-            <div class="coconut-box" onclick="revealCoconut(1)">
-                <div class="coconut">🥥</div>
-                <div class="player-card" id="card-1">؟؟؟</div>
-            </div>
-            <!-- جوزة الهند الثالثة -->
-            <div class="coconut-box" onclick="revealCoconut(2)">
-                <div class="coconut">🥥</div>
-                <div class="player-card" id="card-2">؟؟؟</div>
-            </div>
-        </div>
-
-        <button class="btn-shuffle" id="shuffle-btn" onclick="startShuffle()">إخلط جوز الهند! 🔄</button>
-
-        <div id="result-message">اضغط على الزر للبدء...</div>
+            <!-- زر الإرسال -->
+            <button type="submit">تأكيد إرسال الطلبية</button>
+        </form>
     </div>
 
-    <script>
-        // مصفوفة الأساطير والجوائز النادرة
-        const legends = [
-            "ميسي 👑 (أسطورة نادرة جداً)",
-            "رونالدينيو ✨ (ساحر السامبا)",
-            "كريستيانو رونالدو 🇵🇹 (صاروخ ماديرا)"
-        ];
-
-        let shuffledPrizes = [];
-        let canPick = false;
-        let gameActive = false;
-
-        function startShuffle() {
-            if (gameActive && !canPick) return; // منع الضغط أثناء الخلط
-
-            const boxes = document.querySelectorAll('.coconut-box');
-            const resultMsg = document.getElementById('result-message');
-            const shuffleBtn = document.getElementById('shuffle-btn');
-
-            // إعادة ضبط الحالة السابقة
-            boxes.forEach(box => {
-                box.classList.remove('revealed');
-                box.classList.add('shaking');
-            });
-            
-            resultMsg.innerText = "جاري خلط الجوائز بشكل عشوائي... 🤔";
-            shuffleBtn.disabled = true;
-            canPick = false;
-            gameActive = true;
-
-            // خوارزمية ترتيب عشوائي للمصفوفة (Fisher-Yates Shuffle)
-            shuffledPrizes = [...legends];
-            for (let i = shuffledPrizes.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffledPrizes[i], shuffledPrizes[j]] = [shuffledPrizes[j], shuffledPrizes[i]];
-            }
-
-            // إيقاف الاهتزاز بعد 1.5 ثانية والسماح للاعب بالاختيار
-            setTimeout(() => {
-                boxes.forEach(box => box.classList.remove('shaking'));
-                resultMsg.innerText = "اكتمل الخلط! اختر جوزة هند واحدة الآن 👇";
-                canPick = true;
-                shuffleBtn.disabled = false;
-                shuffleBtn.innerText = "إعادة خلط 🔄";
-            }, 1500);
-        }
-
-        function revealCoconut(index) {
-            if (!canPick) {
-                if (!gameActive) {
-                    alert("الرجاء الضغط على زر الخلط أولاً للبدء!");
-                }
-                return;
-            }
-
-            const boxes = document.querySelectorAll('.coconut-box');
-            
-            // حقن أسماء اللاعبين في الكروت بناءً على الترتيب العشوائي الجديد
-            for (let i = 0; i < 3; i++) {
-                document.getElementById(`card-${i}`).innerText = shuffledPrizes[i];
-            }
-
-            // إظهار الجوزة التي اختارها اللاعب
-            boxes[index].classList.add('revealed');
-
-            // إظهار رسالة الحظ للاعب
-            const wonPlayer = shuffledPrizes[index];
-            const resultMsg = document.getElementById('result-message');
-            resultMsg.innerHTML = `🎉 حظك اليوم هو الأسطورة: <br><span style="color: #e74c3c; font-size: 22px;">${wonPlayer}</span>`;
-
-            // كشف باقي الجوزات بعد ثانية واحدة لرؤية أين كان الآخرون
-            setTimeout(() => {
-                boxes.forEach(box => box.classList.add('revealed'));
-            }, 800);
-
-            // قفل اللعب حتى يتم الضغط على خلط مجدداً
-            canPick = false;
-        }
-    </script>
 </body>
 </html>
