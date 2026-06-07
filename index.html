@@ -3,83 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة طلب منتج</title>
+    <title>متجر المسابح الجاهزة الفاخرة | اطلب الآن</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0; 
-            padding: 20px; 
-            background-color: #f4f7f6; 
-            text-align: center; 
+        :root {
+            --primary-color: #0077b6;
+            --accent-color: #ff5722;
+            --dark-color: #1d3557;
+            --light-bg: #f8f9fa;
         }
-        .form-container { 
-            background: white; 
-            padding: 30px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-            display: inline-block; 
-            max-width: 400px; 
-            width: 100%; 
-            box-sizing: border-box; 
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: #333;
         }
-        h2 { color: #333; margin-bottom: 20px; }
-        label { display: block; text-align: right; margin-bottom: 5px; font-weight: bold; color: #555; }
-        input, select, textarea { 
-            display: block; 
-            width: 100%; 
-            margin-bottom: 15px; 
-            padding: 12px; 
-            border-radius: 5px; 
-            border: 1px solid #ccc; 
-            box-sizing: border-box; 
-            font-size: 16px; 
+
+        /* شريط الإعلان العلوي */
+        .promo-bar {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 8px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
         }
-        button { 
-            background-color: #ff5722; 
-            color: white; 
-            cursor: pointer; 
-            border: none; 
-            font-weight: bold; 
-            width: 100%; 
-            padding: 12px; 
-            font-size: 18px; 
-            border-radius: 5px; 
-            transition: 0.3s; 
+
+        /* الهيدر */
+        header {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
         }
-        button:hover { background-color: #e64a19; }
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* سيكشن العداد التنازلي */
+        .timer-box {
+            background: #ffeae2;
+            border: 1px dashed var(--accent-color);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* سيكشن استعراض المنتجات */
+        .product-gallery {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .main-product-title {
+            font-size: 22px;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+        .price-tag {
+            font-size: 24px;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .price-tag span {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        /* ميزات المنتج */
+        .features-list {
+            background: #f1faee;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: right;
+            margin-bottom: 25px;
+        }
+        .features-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .features-list li {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .features-list li::before {
+            content: "✔️ ";
+            color: var(--primary-color);
+        }
+
+        /* الاستمارة */
+        .order-form-box {
+            background: #fff;
+            border: 2px solid var(--primary-color);
+            padding: 25px;
+            border-radius: 10px;
+        }
+        .order-form-box h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        label {
+            display: block;
+            text-align: right;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        /* التكلفة الإجمالية الديناميكية */
+        .total-price-preview {
+            background: #e2effa;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* زر الشراء السريع والمتحرك لتشجيع الضغط */
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.4);
+            transition: 0.3s;
+            animation: pulse 2s infinite;
+        }
+        .submit-btn:hover {
+            background-color: #e64a19;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        /* سيكشن التقييمات وآراء الزبائن */
+        .reviews-section {
+            margin-top: 30px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        .reviews-section h4 {
+            color: var(--dark-color);
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .review-card {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            text-align: right;
+        }
+        .stars { color: #ffc107; font-size: 16px; margin-bottom: 5px; }
+        .review-author { font-weight: bold; font-size: 14px; color: #555; }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #777;
+        }
     </style>
 </head>
 <body>
 
-    <div class="form-container">
-        <h2>استمارة طلب جديدة 🛒</h2>
-        
-        <!-- تم ربط النموذج ببريدك الإلكتروني مباشرة بالأسفل -->
-        <form action="https://formsubmit.co/mohj7405@gmail.com" method="POST">
-            
-            <!-- 1. نوعية الطلبية -->
-            <label for="order_type">نوعية الطلبية (المنتج):</label>
-            <input type="text" id="order_type" name="نوعية_الطلبية" placeholder="مثال: حذاء رياضي، قميص..." required>
-            
-            <!-- 2. الكمية -->
-            <label for="quantity">الكمية المطلوبة:</label>
-            <input type="number" id="quantity" name="الكمية" min="1" value="1" required>
-            
-            <!-- 3. رقم الهاتف -->
-            <label for="phone">رقم الهاتف لتأكيد الطلب:</label>
-            <input type="tel" id="phone" name="رقم_الهاتف" placeholder="مثال: 06XXXXXXXX" required>
-            
-            <!-- 4. مكان التوصيل -->
-            <label for="address">مكان التوصيل (العنوان والولاية):</label>
-            <textarea id="address" name="مكان_التوصيل" rows="3" placeholder="اكتب عنوانك بالتفصيل هنا..." required></textarea>
-            
-            <!-- إلغاء كابتشا التفعيل المزعجة للزبائن بعد أول تفعيل -->
-            <input type="hidden" name="_captcha" value="false">
+    <div class="promo-bar">🔥 تخفيضات الصيف لفترة محدودة + التوصيل متوفر لجميع الولايات! 🔥</div>
 
-            <!-- زر الإرسال -->
-            <button type="submit">تأكيد إرسال الطلبية</button>
-        </form>
+    <header>
+        <h1>مـتـجـر الـمـسـابـح الـجـاهـزة الأقـوى 🏊‍♂️</h1>
+    </header>
+
+    <div class="container">
+        
+        <div class="timer-box">
+            ⏰ ينتهي العرض الخاص والتخفيض بعد: 02 ساعة و 14 دقيقة!
+        </div>
+
+        <div class="product-gallery">
+            <div class="main-product-title">مسابح فوق الأرض عائلية ومقاومة للصدأ والعوامل الجوية</div>
+            <div class="stars">⭐⭐⭐⭐⭐ (4.9/5 تقييم)</div>
+            <div class="price-tag">التوصيل متوفر لعنوانك <span id="old-price">اتصل للسعر</span></div>
+        </div>
+
+        <div class="features-list">
+            <h4>لماذا تختار مسابحنا الجاهزة؟</h4>
+            <ul>
+                <li>هيكل فولاذي متين وقوي (Power Steel) مقاوم للصدأ تماماً.</li>
+                <li>جدران جانبية مصنوعة من 3 طبقات شديدة التحمل ومقاومة للثقب.</li>
+                <li>سهلة التركيب والتفكيك دون الحاجة لأدوات معقدة أو حفر.</li>
+                <li>تأتي مع ملحقات كاملة (سلم خارجي آمن، مضخة تصفية وفلترة، وغطاء للمسبح).</li>
+            </ul>
+        </div>
+
+        <div class="order-form-box" id="order-section">
+            <h3>لطلب المسبح، يرجى ملء الاستمارة أسفله ⬇️</h3>
+            
+            <form action="https://formsubmit.co/mohj7405@gmail.com" method="POST" id="poolForm">
+                
+                <label for="order_type">اختر نوع وحجم المسبح المطلوب:</label>
+                <select id="order_type" name="نوعية_المسبح_وحجمه" required onchange="updateTotal()">
+                    <option value="مسبح مستطيل أزرق كبير (صورة 1)" data-price="اتصل لمعرفة السعر الحركي">مسبح مستطيل أزرق كبير جداً (الصورة 1)</option>
+                    <option value="مسبح بيضوي رمادي Bestway (صورة 2)" data-price="اتصل لمعرفة السعر الحركي">مسبح بيضوي هيدروليكي رمادي Bestway (الصورة 2)</option>
+                    <option value="مسبح مستطيل عائلي عميق (صورة 3)" data-price="اتصل لمعرفة السعر الحركي">مسبح مستطيل أزرق عميق طويل (الصورة 3)</option>
+                    <option value="مسبح دائرى مظهر خشبي بني (صورة 4)" data-price="اتصل لمعرفة السعر الحركي">مسبح دائري مظهر خشبي بني راقي (الصورة 4)</option>
+                </select>
+
+                <label for="quantity">الكمية المطلوبة:</label>
+                <input type="number" id="quantity" name="الكمية" min="1" value="1" required onchange="updateTotal()">
+
+                <label for="phone">رقم الهاتف (يرجى إدخال رقم هاتف شغال):</label>
+                <input type="tel" id="phone" name="رقم_الهاتف" placeholder="مثال: 05 / 06 / 07 XXXXXXXX" required>
+
+                <label for="address">العنوان الكامل والولاية:</label>
+                <textarea id="address" name="مكان_التوصيل_والولاية" rows="3" placeholder="اكتب ولايتك وعنوانك بالتفصيل لكي يتصل بك السائق..." required></textarea>
+
+                <div class="total-price-preview">
+                    💵 طريقة الدفع: الدفع نقداً عند استلام المسبح وتفقده
+                </div>
+
+                <input type="hidden" name="_captcha" value="false">
+                
+                <input type="hidden" name="_subject" value="طلب مسبح جديد جاهز من الموقع!">
+
+                <button type="submit" class="submit-btn">اضغط هنا لتأكيد الطلب الآن 🛒</button>
+            </form>
+        </div>
+
+        <div class="reviews-section">
+            <h4>آراء وتقييمات زبائننا الكرام (4):</h4>
+            
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-author">أحمد. م (الجزائر العاصمة)</div>
+                <p>قمة في الروعة، المسبح المستطيل (الصورة 1) كبير جداً وممتاز للعائلة، الهيكل قوي جداً والتركيب أخذ منا حوالي ساعة فقط. أنصح به بشدة.</p>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-author">كمال. ب (وهران)</div>
+                <p>اشتريت المسبح ذو المظهر الخشبي الدائري، شكله فخم جداً في الحديقة وخدمة التوصيل كانت سريعة والمعاملة ممتازة والدفع بعد الاستلام.</p>
+            </div>
+        </div>
+
     </div>
 
+    <footer>
+        <p>© 2026 جميع الحقوق محفوظة لمتجر المسابح الجاهزة الفاخرة.</p>
+    </footer>
+
+    <script>
+        // كود لتحديث البيانات تلقائياً وتجهيز الاستمارة
+        function updateTotal() {
+            var select = document.getElementById("order_type");
+            var quantity = document.getElementById("quantity").value;
+            // يمكنك تخصيص هذا الكود لاحقاً لإضافة أسعار ثابتة إذا أردت
+        }
+    </script>
 </body>
 </html>
